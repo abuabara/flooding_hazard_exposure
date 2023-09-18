@@ -68,7 +68,7 @@ tx_galveston_cb <- tx_counties_cb[tx_counties_cb$NAME == "Galveston", ]
                  position = c(.80,.02)))
 
 tmap_arrange(w1, w2)
-# tmap_save(tmap_arrange(w1, w2), "w1 w2.png", width = 3000, height = 1400, asp = 0)
+tmap_save(tmap_arrange(w1, w2), "w1 w2.png", width = 3000, height = 1400, asp = 0)
 
 #### Water ####
 tx_galveston_water <- area_water(county = "Galveston", state = "TX") %>% st_transform(3081)
@@ -112,7 +112,7 @@ as.numeric(object.size(tx_galveston_water_simpl)) / as.numeric(object.size(tx_ga
               frame = FALSE))
 
 tmap_arrange(w3, w4)
-# tmap_save(tmap_arrange(w3, w4), "w3 w4.png", width = 3000, height = 1400, asp = 0)
+tmap_save(tmap_arrange(w3, w4), "w3 w4.png", width = 3000, height = 1400, asp = 0)
 
 # (tm_shape(tx_galveston) +
 #     tm_polygons(col = "gold") +
@@ -217,7 +217,7 @@ floodplain_diss <- rbind(floodplain_diss,
               frame = FALSE))
 
 tmap_arrange(w5, w6)
-# tmap_save(tmap_arrange(w5, w6), "w5 w6.png", width = 3000, height = 1400, asp = 0)
+tmap_save(tmap_arrange(w5, w6), "w5 w6.png", width = 3000, height = 1400, asp = 0)
 
 #### LandScan ####
 landscan <- rast("/Users/alexander/Documents/Research/Census/Hazard exposure/Data/landscan-usa-2019-night/landscan-usa-2019-conus-night.tif")
@@ -252,7 +252,7 @@ landscan_tx_galveston[landscan_tx_galveston < 1 ] = NA
                   col = "brown4",
                   size = 2,
                   labels = c("Galveston County (Cartographic Boundary)")))
-# tmap_save(w7, "w7.png", width = 1800, height = 1400, asp = 0)
+tmap_save(w7, "w7.png", width = 1800, height = 1400, asp = 0)
 
 tx_galveston_acs_tract_pop <-
   get_acs(geography = "tract",
@@ -386,7 +386,7 @@ downtown_bb <- st_bbox(st_buffer(tx_galveston_acs_tract_pop %>%
               fontfamily = "Georgia",
               legend.bg.color = "white",
               frame = FALSE))
-# tmap_save(w8, "w8.png", width = 1800, height = 1400, asp = 0)
+tmap_save(w8, "w8.png", width = 1800, height = 1400, asp = 0)
 
 (tot <- length(st_intersects(tx_galveston, parcels)[[1]]))
 (c1 <- length(st_intersects(filter(floodplain_diss, recode == "Water"), st_centroid(parcels))[[1]]))
